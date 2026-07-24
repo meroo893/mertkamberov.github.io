@@ -34,7 +34,7 @@ const { Content } = await render(post);
       <div class="post__body">
         <Content />
       </div>
-      <p><a href="/blog/">← cd ..</a></p>
+      <p><a href={`${import.meta.env.BASE_URL}blog/`}>← cd ..</a></p>
     </div>
   </article>
 </BaseLayout>

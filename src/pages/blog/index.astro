@@ -21,7 +21,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
           <ul class="posts">
             {posts.map((post) => (
               <li class="posts__item">
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                <a href={`${import.meta.env.BASE_URL}blog/${post.id}/`}>{post.data.title}</a>
                 <time datetime={post.data.pubDate.toISOString()}>
                   {post.data.pubDate.toLocaleDateString('en-GB', {
                     year: 'numeric',

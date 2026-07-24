@@ -8,5 +8,5 @@ export const site = {
   email: 'mertkamber2003@gmail.com',
   github: 'https://github.com/meroo893',
   linkedin: 'https://www.linkedin.com/in/mert-kamberov-160550212/',
-  cv: '/cv.pdf',
+  cv: `${import.meta.env.BASE_URL}cv.pdf`,
 };
