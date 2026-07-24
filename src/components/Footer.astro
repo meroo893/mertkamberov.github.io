@@ -1,0 +1,29 @@
+---
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__line">
+      © {year} {site.name} · built with <a href="https://astro.build" target="_blank" rel="noopener">Astro</a> ·
+      <a href={`${site.github}/mertkamberov.github.io`} target="_blank" rel="noopener">source</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+    padding-block: 1.5rem;
+  }
+
+  .footer__line {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

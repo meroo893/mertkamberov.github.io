@@ -1,0 +1,45 @@
+---
+import { skillGroups } from '../data/skills';
+---
+
+<section id="skills">
+  <div class="container">
+    <h2 class="prompt-heading">ls ./skills</h2>
+    <dl class="skills">
+      {
+        skillGroups.map((group) => (
+          <div class="skills__group">
+            <dt class="skills__label">{group.label}/</dt>
+            <dd class="skills__items">
+              {group.items.map((item) => (
+                <span class="chip">{item}</span>
+              ))}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<style>
+  .skills {
+    display: grid;
+    gap: 1.25rem;
+    margin: 0;
+  }
+
+  .skills__label {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .skills__items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+  }
+</style>

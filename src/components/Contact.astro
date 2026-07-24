@@ -1,0 +1,28 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="contact">
+  <div class="container">
+    <h2 class="prompt-heading">ping mert</h2>
+    <p>
+      Open to Data Engineering roles, IoT collaborations, and interesting
+      problems. The fastest way to reach me:
+    </p>
+    <div class="contact__actions">
+      <a class="btn btn--primary" href={`mailto:${site.email}`}>{site.email}</a>
+      <a class="btn" href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href={site.github} target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href={site.cv} download>Download CV</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+</style>

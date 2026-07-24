@@ -1,0 +1,80 @@
+---
+import { projects } from '../data/projects';
+---
+
+<section id="projects">
+  <div class="container">
+    <h2 class="prompt-heading">ls ./projects</h2>
+    <div class="projects">
+      {
+        projects.map((project) => (
+          <article class="card project">
+            <h3 class="project__name">
+              {project.repo ? (
+                <a href={project.repo} target="_blank" rel="noopener">
+                  {project.name}
+                </a>
+              ) : (
+                project.name
+              )}
+              {project.placeholder && (
+                <span class="project__wip" title="Write-up in progress">
+                  WIP
+                </span>
+              )}
+            </h3>
+            <p class="project__desc">{project.description}</p>
+            <div class="project__tags">
+              {project.tags.map((tag) => (
+                <span class="chip">{tag}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+    gap: 1rem;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__name {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .project__wip {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--bg-inset);
+    background: var(--text-muted);
+    border-radius: 3px;
+    padding: 0.1rem 0.35rem;
+  }
+
+  .project__desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .project__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+</style>

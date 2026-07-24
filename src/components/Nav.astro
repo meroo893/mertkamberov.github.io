@@ -1,0 +1,92 @@
+---
+import { getCollection } from 'astro:content';
+import { site } from '../data/site';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+const hasBlog = posts.length > 0;
+
+const links = [
+  { href: '/#about', label: 'about' },
+  { href: '/#skills', label: 'skills' },
+  { href: '/#projects', label: 'projects' },
+  { href: '/#certificates', label: 'certificates' },
+  { href: '/#contact', label: 'contact' },
+  ...(hasBlog ? [{ href: '/blog/', label: 'blog' }] : []),
+];
+---
+
+<header class="nav">
+  <div class="container nav__inner">
+    <a class="nav__brand" href="/">mert@sofia:~$</a>
+    <nav aria-label="Main">
+      <ul class="nav__links">
+        {
+          links.map(({ href, label }) => (
+            <li>
+              <a href={href}>{label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 0.85rem;
+  }
+
+  .nav__brand {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent);
+  }
+
+  .nav__brand:hover {
+    text-decoration: none;
+  }
+
+  .nav__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav__links a {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .nav__links a:hover,
+  .nav__links a:focus-visible {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .nav__inner {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+    }
+  }
+</style>

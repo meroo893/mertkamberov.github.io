@@ -1,0 +1,71 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero__cmd" aria-hidden="true">$ ./introduce --name</p>
+    <h1 class="hero__name">
+      {site.name}<span class="hero__cursor" aria-hidden="true">▌</span>
+    </h1>
+    <p class="hero__tagline">{site.tagline}</p>
+    <p class="hero__blurb">
+      I build robust data pipelines, containerized AI environments, and
+      real-time IoT systems — bridging the gap between Big Data infrastructure
+      and physical hardware.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href={site.cv} download>Download CV</a>
+      <a class="btn" href={site.github} target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href={site.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href={`mailto:${site.email}`}>Email</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: 6rem 3rem;
+  }
+
+  .hero__cmd {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__name {
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero__cursor {
+    color: var(--accent);
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .hero__tagline {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__blurb {
+    color: var(--text-muted);
+    max-width: 38rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+</style>

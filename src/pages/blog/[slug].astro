@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout
+  title={`${post.data.title} — ${site.name}`}
+  description={post.data.description}
+>
+  <article class="post">
+    <div class="container">
+      <h1 class="post__title">{post.data.title}</h1>
+      <time class="post__date" datetime={post.data.pubDate.toISOString()}>
+        {
+          post.data.pubDate.toLocaleDateString('en-GB', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        }
+      </time>
+      <div class="post__body">
+        <Content />
+      </div>
+      <p><a href="/blog/">← cd ..</a></p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    padding-block: 3rem;
+  }
+
+  .post__title {
+    font-size: 2rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .post__date {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .post__body {
+    margin-block: 2rem;
+  }
+</style>
