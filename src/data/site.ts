@@ -7,7 +7,6 @@ export const site = {
     'Mert Kamberov — Data Engineer and IoT enthusiast in Sofia, Bulgaria. Data pipelines, containerized AI environments, and real-time IoT systems.',
   email: 'mertkamber2003@gmail.com',
   github: 'https://github.com/meroo893',
-  // TODO(mert): set your real LinkedIn profile URL
-  linkedin: 'https://www.linkedin.com/in/mert-kamberov',
+  linkedin: 'https://www.linkedin.com/in/mert-kamberov-160550212/',
   cv: '/cv.pdf',
 };
